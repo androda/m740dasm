@@ -2,6 +2,66 @@ from m740dasm.symbols import Symbol
 
 Devices = {}
 
+# "M50753" (e.g. M50753)
+Devices["M50753"] = {"vector_table":
+    [ # Interrupt vector table - "M50753"
+        0xfff4, # BRK instruction / INT2
+        0xfff5, # BRK instruction / INT2
+        0xfff6, # Timer 2
+        0xfff7, # Timer 2
+        0xfff8, # Timer 1
+        0xfff9, # Timer 1
+        0xfffa, # Timer X
+        0xfffb, # Timer X
+        0xfffc, # INT1 (External interrupt)
+        0xfffd, # INT1 (External interrupt)
+        0xfffe, # RESET
+        0xffff, # RESET
+    ],
+    "symbol_table":
+    [ # Symbol Table - "M50753"
+        # I/O
+        Symbol(0x00e0, "P0",      "Port P0"),
+        Symbol(0x00e1, "P0D",     "Port P0 directional register"),
+        Symbol(0x00e2, "P1",      "Port P1"),
+        Symbol(0x00e3, "P1D",     "Port P1 directional register"),
+        Symbol(0x00e4, "P2",      "Port P2"),
+        Symbol(0x00e5, "P2D",     "Port P2 directional register"),
+        Symbol(0x00e8, "P3",      "Port P3"),
+        Symbol(0x00e9, "P3D",     "Port P3 directional register"),
+        Symbol(0x00ea, "P4",      "Port P4"),
+        Symbol(0x00eb, "P4D",     "Port P4 directional register"),
+        Symbol(0x00ee, "IN",      "IN register"),
+        Symbol(0x00ef, "AD",      "A-D register"),
+        Symbol(0x00f2, "ADStart", "A-D Start Address"),
+        Symbol(0x00f3, "ADCtrl",  "A-D Control Register"),
+        Symbol(0x00f5, "PWM",     "PWM Control Register"),
+        Symbol(0x00f6, "SIOM",    "Serial I/O Mode"),
+        Symbol(0x00f7, "SIO",     "Serial I/O"),
+        Symbol(0x00f9, "T12P",    "Timer 1/2 Prescaler"),
+        Symbol(0x00fa, "T1",      "Timer 1"),
+        Symbol(0x00fb, "T2",      "Timer 2"),
+        Symbol(0x00fc, "TXP",     "Timer X Prescaler"),
+        Symbol(0x00fd, "TX",      "Timer X"),
+        Symbol(0x00fe, "ICR",     "Interrupt Control Register"),
+        Symbol(0x00ff, "TCR",     "Timer Control Register"),
+
+        # vectors
+        Symbol(0xfffe, "INT_FFFE_RESET",         "Reset vector"),
+        Symbol(0xffff, "INT_FFFF_RESET",         "Reset vector"),
+        Symbol(0xfffc, "INT_FFFC_INT1",          "INT1 (External interrupt 1)"),
+        Symbol(0xfffd, "INT_FFFD_INT1",          "INT1 (External interrupt 1)"),
+        Symbol(0xfffa, "INT_FFFA_TIMERX",        "Timer X"),
+        Symbol(0xfffb, "INT_FFFB_TIMERX",        "Timer X"),
+        Symbol(0xfff8, "INT_FFF8_AD_TIMER1",     "AD Or Timer 1"),
+        Symbol(0xfff9, "INT_FFF9_AD_TIMER1",     "AD Or Timer 1"),
+        Symbol(0xfff6, "INT_FFF8_Serial_TIMER2", "Serial Or Timer 2"),
+        Symbol(0xfff7, "INT_FFF9_Serial_TIMER2", "Serial Or Timer 2"),
+        Symbol(0xfff4, "INT_FFFF4_BRK_INT2",     "BRK instruction"),
+        Symbol(0xfff5, "INT_FFFF5_BRK_INT2",     "BRK instruction"),
+    ]
+}
+
 # "7450 Group" (e.g. M37450)
 Devices["7450"] = {"vector_table":
     [ # Interrupt vector table - "7450 Group"
